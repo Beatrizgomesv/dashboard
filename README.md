@@ -1,165 +1,166 @@
-# Sistema de Gestão de Produção e Estoque
+# 🏭 Sistema de Gestão de Produção e Estoque
 
-## 📌 Visão Geral
+📌 **Projeto desenvolvido como parte de um teste prático técnico.**
 
-Este projeto foi desenvolvido como parte de um teste prático técnico.
+Este sistema simula um ambiente industrial onde produtos são fabricados a partir de matérias-primas. Ele permite gerenciar estoque, definir composições e simular cenários de produção com base na disponibilidade de insumos.
 
-O sistema simula um ambiente industrial onde produtos são fabricados a partir de matérias-primas. Ele permite gerenciar produtos, controlar o estoque de insumos, definir associações entre produtos e matérias-primas e calcular quais produtos podem ser produzidos com base no estoque disponível.
-
-A aplicação segue arquitetura fullstack com separação clara entre front-end e back-end, aplicando boas práticas de organização, testes automatizados e regras de negócio.
+A aplicação foi desenvolvida seguindo arquitetura **fullstack**, com separação clara entre **frontend** e **backend**.
 
 ---
 
-## 🏗️ Arquitetura
+## 📦 Funcionalidades Principais
 
-O projeto está estruturado em formato **monorepo**:
+O sistema permite:
+
+- ✅ Gerenciar produtos  
+- ✅ Controlar estoque de matérias-primas  
+- ✅ Definir associações entre produtos e insumos  
+- ✅ Simular produção com base no estoque disponível  
+- ✅ Priorizar produtos de maior valor na sugestão de produção  
+
+---
+
+# 🏗️ Arquitetura
+
+Estrutura organizada em **monorepo**:
 
 
 inventory-system/
 
-├── backend/ → API REST em Spring Boot
+
+├── backend/ → API REST (Spring Boot)
 
 └── frontend/ → Aplicação React + Vite
 
 
-### Backend
-- API RESTful
-- Camadas organizadas em Controller → Service → Repository
-- Regras de negócio centralizadas na camada de serviço
+## 🔹 Backend
 
-### Frontend
-- SPA (Single Page Application)
-- Comunicação com a API via Axios
-- Interface responsiva
+- API RESTful  
+- Arquitetura em camadas:  
+  `Controller → Service → Repository`  
+- Regras de negócio centralizadas na camada de **Service**  
+- Persistência em banco relacional (PostgreSQL)
+
+## 🔹 Frontend
+
+- SPA (Single Page Application)  
+- Comunicação com a API via **Axios**  
+- Interface responsiva com **TailwindCSS**
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+# ⚙️ Tecnologias Utilizadas
 
-### 🔹 Backend
-- Java 17
-- Spring Boot 3
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Maven
-- JUnit 5
-- Mockito
+## 🖥️ Backend
+
+- Java 17  
+- Spring Boot 3  
+- Spring Data JPA  
+- Hibernate  
+- PostgreSQL  
+- Maven  
+- JUnit 5  
+- Mockito  
 - Springdoc OpenAPI (Swagger)
 
-### 🔹 Frontend
-- React
-- TypeScript
-- Vite
-- Axios
-- TailwindCSS
-- Vitest
-- Cypress
+## 🌐 Frontend
+
+- React  
+- TypeScript  
+- Vite  
+- Axios  
+- TailwindCSS  
+- Vitest  
+- Cypress  
 
 ---
 
-## 📊 Funcionalidades
+# 📊 Funcionalidades Detalhadas
 
-### Backend
+## Backend
 
-- CRUD completo de Produtos
-- CRUD completo de Matérias-Primas
-- CRUD de Associações Produto ↔ Matéria-Prima
-- Endpoint para simulação de produção
-- Regra de negócio para priorização de produtos de maior valor
+- 🔹 CRUD de Produtos  
+- 🔹 CRUD de Matérias-Primas  
+- 🔹 CRUD de Associações Produto ↔ Matéria-Prima  
+- 🔹 Simulação de produção baseada no estoque  
+- 🔹 Priorização por maior valor de produto  
 
-### Frontend
+## Frontend
 
-- Tela de gerenciamento de produtos
-- Tela de gerenciamento de matérias-primas
-- Tela de associações
-- Tela de simulação de produção
-- Dashboard com visão geral
-- Interface responsiva
-
----
-
-## 🗄️ Modelo de Dados
-
-### Product
-- id
-- name
-- price
-
-### RawMaterial
-- id
-- name
-- stockQuantity
-
-### ProductComposition
-- productId
-- rawMaterialId
-- quantity
+- 🖥️ Tela de Produtos  
+- 🧱 Tela de Matérias-Primas  
+- 🔗 Tela de Associações  
+- 📈 Tela de Simulação de Produção  
+- 📊 Dashboard com visão geral  
 
 ---
 
-## 🧠 Regra de Negócio – Simulação de Produção
+# 🗄️ Modelo de Dados
+
+## 📌 Product
+- `id`
+- `name`
+- `price`
+
+## 📌 RawMaterial
+- `id`
+- `name`
+- `stockQuantity`
+
+## 📌 ProductComposition
+- `productId`
+- `rawMaterialId`
+- `quantity`
+
+---
+
+# 🧠 Regra de Negócio – Simulação de Produção
 
 O sistema calcula:
 
-- Quais produtos podem ser produzidos
-- Quantidade máxima possível com base no estoque disponível
-- Valor total potencial de produção
+- ✔️ Quais produtos podem ser produzidos  
+- ✔️ Quantidade máxima possível com base no estoque disponível  
+- ✔️ Valor total potencial de produção  
 
-Quando uma matéria-prima é utilizada por mais de um produto, a priorização é feita considerando os produtos de maior valor.
-
----
-
-## 🧪 Testes Automatizados
-
-### Backend
-- Testes unitários com JUnit 5
-- Mock de dependências com Mockito
-- Validação da lógica de negócio
-
-### Frontend
-- Testes unitários com Vitest
-- Testes de componentes
-- Testes End-to-End com Cypress
-
-Fluxos validados:
-- Cadastro de produto
-- Cadastro de matéria-prima
-- Associação entre produto e matéria-prima
-- Simulação de produção
-- Validação de cálculos e valores exibidos
+Quando uma matéria-prima é compartilhada entre múltiplos produtos, o sistema prioriza automaticamente os **produtos de maior valor**, maximizando o retorno potencial.
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
+# 🧪 Testes Automatizados
 
-### 1️⃣ Clonar o repositório
+## Backend
+
+- Testes unitários com **JUnit 5**  
+- Mock de dependências com **Mockito**  
+- Validação das regras de negócio  
+
+## Frontend
+
+- Testes unitários com **Vitest**  
+- Testes de componentes  
+- Testes End-to-End com **Cypress**
+
+---
+
+# 🚀 Como Executar o Projeto Localmente
+
+## 1️⃣ Clonar o repositório
 
 ```bash
 git clone https://github.com/Beatrizgomesv/dashboard.git
 cd inventory-system
 🔧 Configuração do Backend
-
-O projeto utiliza PostgreSQL como banco de dados.
-
-Configure as seguintes variáveis de ambiente:
-
-DB_URL
-
-DB_USERNAME
-
-DB_PASSWORD
-
-Exemplo:
-
+Criar banco PostgreSQL:
+inventory_db
+Definir variáveis de ambiente:
 DB_URL=jdbc:postgresql://localhost:5432/inventory_db
 DB_USERNAME=postgres
 DB_PASSWORD=sua_senha
-Executar o backend
+Executar o backend:
 cd backend
 ./mvnw spring-boot:run
 
-A API ficará disponível em:
+API disponível em:
 
 http://localhost:8080
 
@@ -184,24 +185,27 @@ npm run test
 Cypress – Testes E2E
 cd frontend
 npx cypress open
-📋 Requisitos Atendidos
-Requisitos Não Funcionais
+
+```
+
+## 📋 Requisitos Atendidos
+✅ Requisitos Não Funcionais
 
 Aplicação WEB
 
-Separação entre front-end e back-end (arquitetura API)
+Separação entre frontend e backend
 
 Interface responsiva
 
 Persistência em banco relacional
 
-Backend desenvolvido com framework
+Backend desenvolvido com framework moderno
 
-Código desenvolvido em inglês
+Código em inglês
 
 Testes automatizados
 
-Requisitos Funcionais
+✅ Requisitos Funcionais
 
 CRUD de Produtos
 
@@ -209,54 +213,50 @@ CRUD de Matérias-Primas
 
 CRUD de Associações
 
-Consulta de produção possível com base no estoque
+Consulta de produção possível
 
 Interface gráfica para todas as operações
 
-🧩 Decisões Técnicas
+## 🧩 Decisões Técnicas
 
 Separação clara de responsabilidades
 
-Uso de boas práticas REST
-
 Centralização das regras de negócio
+
+Boas práticas REST
 
 Configuração via variáveis de ambiente
 
-Estrutura preparada para deploy em ambiente cloud
+Estrutura preparada para ambiente cloud
 
-Organização em monorepo para melhor gerenciamento
+## 💡 Possíveis Melhorias Futuras
 
-💡 Possíveis Melhorias Futuras
+🔐 Autenticação e autorização
 
-Autenticação e autorização
+📄 Paginação e filtros
 
-Paginação e filtros
+🐳 Containerização com Docker
 
-Containerização com Docker
+🔄 CI/CD completo
 
-Pipeline CI/CD completo
+☁️ Banco de dados em ambiente cloud
 
-Ambiente de produção com banco em nuvem
+⚡ Otimização avançada da lógica de produção
 
-Otimização avançada da lógica de produção
-
-👩‍💻 Desenvolvido por
+## 👩‍💻 Desenvolvido por
 
 Beatriz Gomes
 
-📎 Observações Finais
+## 📎 Observações Finais
 
-O projeto foi desenvolvido com foco em:
+Projeto desenvolvido com foco em:
 
 Organização
 
-Clareza de código
+Clareza
 
 Boas práticas
 
 Testabilidade
 
-Implementação real de regras de negócio
-
-O sistema está funcional e pronto para avaliação técnica.
+✔️ Sistema funcional e pronto para avaliação técnica.
