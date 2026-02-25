@@ -18,8 +18,8 @@ jobs:
         with:
           projectBaseDir: frontend
           args: >
-            -Dsonar.projectKey=beatrizgomesv_dashboard
-            -Dsonar.organization=beatrizgomesv
+              -Dsonar.projectKey=Beatrizgomesv_dashboard
+              -Dsonar.organization=beatrizgomesv
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
